@@ -1,0 +1,50 @@
+<%- include("../__layout/header_admin") %>
+<div class="container">
+<h2 class="page-title">Pages</h2>
+<a href="/admin/pages/add-page" class="btn btn-success">+ Add a new page</a>
+<br><br><br>
+
+<table class="table table-striped text-center">
+<thead>
+<tr>
+<th>Title</th>
+<th>Edit</th>
+<th>Delete</th>
+</tr>
+</thead>
+<tbody >
+
+<% pages.forEach(function(page){ %>
+	<tr id="id_<%= page._id%>" class="<%= page.slog %>">
+	<td><%= page.title %></td>
+	
+	<td><a href="/admin/pages/edit-page/<%= page.slog %>" class="btn btn-primary">Edit</a></td>
+	
+	<% if(page.slog == "home"){ %>
+		<td></td>
+		<% }else{%>
+			<td><button type="button" data-toggle="modal" data-target="#myModal" id="<%= page._id %>" class="btn btn-danger">Delete</button></td>
+			<% } %>
+			
+			</tr>
+			<% }); %>
+			
+			</tbody>
+			</table>
+			
+</div>
+
+<%- include("../__layout/footer_admin") %>
+<script src="/js/jquery-ui.min.js"></script>
+<script src="/js/delete-page.js"></script>
+<script>
+	$("tbody").sortable({
+		items:"tr:not('.home')",
+		placeholder:"ui-state-hightlight",
+		update:function(){
+			var ids = $("tbody").sortable("serialize");
+			var url = "/admin/pages/reorder-page";
+			$.post(url,ids);
+		}
+	});
+</script>

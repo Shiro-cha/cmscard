@@ -1,0 +1,32 @@
+
+
+
+<br><br><br>
+<hr>
+<p class="text-center  text-dark">- &copy; Copyright Shiro Yuka 2022</p>
+ <script src="/js/jquery.min.js"></script>
+ <script src="/bootstrap/js/bootstrap.min.js"></script>
+ <script src="/js/ckeditor/ckeditor.js"></script>
+ <script src="/js/taeditor.js"></script>
+ <script>
+ 	$(function(){
+		if(window.location.pathname =="/admin/pages"){
+			$("#pages").addClass("active");
+			$("#categories").removeClass("active");
+			$("#products").removeClass("active");
+		}else if(window.location.pathname =="/admin/category"){
+			$("#categories").addClass("active");
+			$("#pages").removeClass("active");
+			$("#products").removeClass("active");
+		}else if(window.location.pathname =="/admin/product"){
+			$("#products").addClass("active");
+			$("#pages").removeClass("active");
+			$("#categories").removeClass("active");
+		}
+	});
+ 
+ </script>
+ 
+ </body>
+ 
+ </html>

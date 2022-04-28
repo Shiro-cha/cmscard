@@ -1,0 +1,6 @@
+tr:not(.home){
+	cursor:pointer;
+}
+.ui-state-hightlight{
+	border: 2px dashed #567890;
+}

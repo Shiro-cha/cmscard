@@ -1,0 +1,52 @@
+<%- include("../__layout/header_admin") %>
+<div class="container">
+<h2 class="page-title">Products</h2>
+<a href="/admin/product/add-product" class="btn btn-success">+ Add a new Product</a>
+<br><br><br>
+<% if(count > 0){ %>
+	
+
+<table class="table table-striped text-center">
+<thead>
+<tr>
+<th>Product</th>
+<th>Price</th>
+<th>Category</th>
+<th>Image</th>
+<th>Edit</th>
+<th>Delete</th>
+</tr>
+</thead>
+<tbody >
+
+<% products.forEach(function(product){ %>
+	<tr id="id_<%= product._id%>" class="<%= product.slog %>">
+	<td><%= product.title %></td>
+	<td><%= product.price %></td>
+	<td><%= product.category %></td>
+	<td><% if(product.image ==""){ %>
+		<image src="/images/noimage.png" alt="Default Image...">
+		<% }else{ %>
+			
+			<image src="/product_image/<%= product._id %>/<%= product.image %>" alt="Image for <%= product.title %>" width="50px" height="50px">
+			
+		<% } %>
+	</td>
+	
+	<td><a href="/admin/product/edit-page/<%= product.slog %>" class="btn btn-primary">Edit</a></td>
+	
+	<td><button type="button" data-toggle="modal" data-target="#myModal" id="<%= product._id %>" class="btn btn-danger">Delete</button></td>
+			
+			</tr>
+			<% }); %>
+			
+			</tbody>
+			</table>
+			<% }else{ %>
+				<h3 class="text-center">There are no product...</h3>	
+			<%	} %>
+</div>
+
+<%- include("../__layout/footer_admin") %>
+<script src="/js/delete-page.js"></script>
+

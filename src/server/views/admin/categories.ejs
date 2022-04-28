@@ -1,0 +1,33 @@
+<%- include("../__layout/header_admin") %>
+<div class="container">
+<h2 class="page-title m-3">Categories</h2>
+<a href="/admin/category/add-category" class="btn btn-success">+ Add a new Category</a>
+<br><br><br>
+
+<table class="table table-striped text-center">
+<thead>
+<tr>
+<th>Categories</th>
+<th>Edit</th>
+<th>Delete</th>
+</tr>
+</thead>
+<tbody >
+
+	<% categories.forEach(function(element){%>
+		<tr>
+		
+		<td><%= element.title %></td>
+		<td><a href="/admin/category/edit-category/<%= element._id %>" class="btn btn-primary">Edit</a></td>
+		<td><button type="button" data-toggle="modal" data-target="#myModal" id="<%= element._id %>" class="btn btn-danger">Delete</button></td>
+		</tr>
+		<% }) %>
+			
+</tbody>
+</table>
+			
+</div>
+
+<%- include("../__layout/footer_admin") %>
+<script src="/js/delete-category.js"></script>
+

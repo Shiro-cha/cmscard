@@ -1,0 +1,20 @@
+<%- include("../__layout/header_admin") %>
+
+<div class="container">
+<h2 class="page-title">Add page</h2>
+<a href="/admin/pages" class="btn btn-info"><< Back to the main page</a>
+<br><br><br>
+<form action="/admin/category/add-category" method="post" id="myform">
+<div class="form-group">
+<label  for="title">Title</label>        
+<input type="text" class="form-control" name="title" id="title" placeholder="Add the title" value="<%= title %>">
+<p class='alert-warning' ></p>
+<button type="submit"  class="btn btn-info" id="btn-submit">Add</button>
+
+</form>
+</div>
+
+
+
+<%- include("../__layout/footer_admin") %>
+<script src="/js/add-category-validation.js"></script>
