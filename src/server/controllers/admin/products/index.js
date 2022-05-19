@@ -17,14 +17,19 @@ class Product{
 		var count;
 		
 		product_model.count(function(err,c){
+			if(err){
+				console.log("There is an error form the database....");
+				throw err ;
+			}
 			count = c;
-		});
-		product_model.find(function(err,products){
-			res.render("admin/products",{
-				products:products,
-			  count:count
+			product_model.find(function(err,products){
+				res.render("admin/products",{
+					products:products,
+				  count:count
+				});
 			});
 		});
+		
 		
 	}
 	
@@ -131,6 +136,45 @@ class Product{
 		}
 		
 		
+	}
+
+
+	//get edit product
+
+	getEditProduct(req,res){
+		product_model.findById(req.params.id,function(err,product){
+			if(err){
+				console.log(err);
+				res.redirect("/admin/product")
+				
+			}else{
+				var galleryDir = `public/product_image/${product.id}`
+				var galleryImages = null
+				
+				fs.readdir(galleryDir,function(err,files){
+					if(err){
+						console.log(err)
+					}else{
+						galleryImages = files;
+						
+						
+						category_model.find(function(err,cats){
+							res.render("admin/add_product",{
+				  title:product.title,
+				  price:product.price,
+				  desc:product.desc,
+				  category:product.category,
+				  slog:product.slog,
+				  image:product.image,
+				  categories: cats,
+				  gallerImages: galleryImages 
+							});
+						});
+					}
+				})
+			}
+			
+	});
 	}
 	
 } 

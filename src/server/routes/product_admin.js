@@ -52,18 +52,9 @@ router.post(
 
 
 
-// GET edit-caegory/:id
+// GET edit-product/:id
 
-router.get("/edit-category/:id",function(req,res){
-	category_model.findById(req.params.id,function(err,category){
-		if(err) throw err;
-		
-		res.render("admin/edit-category",{
-			title:category.title,
-			 id:category._id
-		});
-	});
-});
+router.get("/edit-product/:id",product_admin.getEditProduct);
 
 
 // POST edit-category/:id

@@ -1,0 +1,84 @@
+<%- include("../__layout/header_admin") %>
+<link rel="stylesheet" href="/css/add-product.css">
+
+
+<div class="container">
+<h2 class="page-title">Add product</h2>
+<a href="/admin/pages" class="btn btn-info"><< Back</a>
+<br><br><br>
+<form action="/admin/product/add-product" method="post" id="myform" enctype="multipart/form-data">
+<div class="form-group">
+<label  for="title">Product name</label>        
+<input type="text" class="form-control" name="title" id="title" placeholder="Add product name" value="<%= title %>">
+<p class='alert-warning' ></p>
+</div>
+
+<div class="form-group">
+<label  for="price">Price</label>        
+<input type="text" class="form-control" name="price" id="price" placeholder="Set product price" value="<%= price %>">
+<p class='alert-warning' ></p>
+</div>
+
+<div class="form-group">
+<label  for="category">Category name</label>        
+
+<select class="form-control custom-select" name="category" id="category" placeholder="Select a category">
+	<option>...</option>
+<% categories.forEach(function(category){ %>
+	<option value="<%= category.slog %>" ><%= category.title %></option>
+	
+	<% }); %>
+
+</select>
+
+<p class='alert-warning' ></p>
+</div>
+
+<div class="form-group">
+<label  for="desc">Description</label>        
+
+<textarea class='form-control' name="desc" id="desc"><%= desc %></textarea>
+
+<p class='alert-warning' ></p>
+</div>
+
+<div class="form-group">
+<label  for="image">Update image</label>        
+<input type="file" class="form-control" name="image" id="image" placeholder="Set product price" value="image">
+<img src="#" alt="No Image is selected" id="imagepreview">
+<p class='alert-warning' ></p>
+</div>
+
+<button type="submit"  class="btn btn-info" id="btn-submit">Add</button>
+
+
+</form>
+ohofskdqfdsjqfdjsqfs
+<input type="file" name="gallery" multiple class="form-control">
+
+</div>
+
+
+
+
+<%- include("../__layout/footer_admin") %>
+
+<script>
+$(function(){
+	function imagePreview(input){
+		if(input.files && input.files[0]){
+			let reader = new FileReader();
+			reader.onload = function(e){
+				$("#imagepreview").attr("src",e.target.result).width(100).height(100);
+				console.log(e);
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+	
+	$("input#image").change(function(){
+		imagePreview(this);
+	});
+});
+
+</script>
