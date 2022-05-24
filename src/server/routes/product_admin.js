@@ -59,56 +59,6 @@ router.get("/edit-product/:id",product_admin.getEditProduct);
 
 // POST edit-category/:id
 
-router.post("/edit-category/:id",validator.body("title","Title should not be empty").notEmpty(),function(req,res){
-	
-				const errors = validator.validationResult(req);
-				if(errors.errors.length){
-					res.send(JSON.stringify({msg:errors.errors[0].msg,succes:false}));
-					
-				}else{
-					
-					let title = req.body.title;
-					let id = req.params.id;
-					
-					category_model.findOne({title:title},function(err,element){
-						if(err) throw err;
-						console.log(element);
-						if(element){
-							if(element._id == id){
-								res.send(JSON.stringify({success:true}));
-							}else{
-								res.send(JSON.stringify({msg:"This category already exist",success:false}));
-							}
-						}else{
-							category_model.findById(id,function(err,_element){
-								_element.title = title;
-								_element.save(function(err){
-									if(err) throw err;
-									res.send(JSON.stringify({success:true}));
-								});
-							});
-						}
-					});
-					
-					
-				}
-					  
-					  
-			
-			
-	
-});
-
-
-// POST delete category
-router.post("/delete-category/:id",function(req,res){
-	category_model.findByIdAndRemove(req.params.id,function(err){
-		if(err) throw err;
-		console.log(req.url);
-		res.send("deleting success");
-		
-	});
-})
 
 
 

@@ -3,10 +3,10 @@
 
 
 <div class="container">
-<h2 class="page-title">Add product</h2>
-<a href="/admin/pages" class="btn btn-info"><< Back</a>
+<h2 class="page-title">Edit product</h2>
+<a href="/admin/product" class="btn btn-info"><< Back</a>
 <br><br><br>
-<form action="/admin/product/add-product" method="post" id="myform" enctype="multipart/form-data">
+<form action="/admin/product/edit-product" method="post" id="myform" enctype="multipart/form-data">
 <div class="form-group">
 <label  for="title">Product name</label>        
 <input type="text" class="form-control" name="title" id="title" placeholder="Add product name" value="<%= title %>">
@@ -24,8 +24,8 @@
 
 <select class="form-control custom-select" name="category" id="category" placeholder="Select a category">
 	<option>...</option>
-<% categories.forEach(function(category){ %>
-	<option value="<%= category.slog %>" ><%= category.title %></option>
+<% categories.forEach(function(_category){ %>
+	<option value="<%= _category.slog %>" <% if( _category.slog == category){ %> <%= "selected='true'" %> <%} %> ><%= _category.title %></option>
 	
 	<% }); %>
 
@@ -53,9 +53,13 @@
 
 
 </form>
-ohofskdqfdsjqfdjsqfs
-<input type="file" name="gallery" multiple class="form-control">
+<form  enctype="multipart/form-data">
+<div class="file-upload-wrapper">
+<input type="file" name="gallery" class="file-upload" >
 
+</div>
+<input type="submit" value="submit"  class="">
+</form>
 </div>
 
 

@@ -28,6 +28,7 @@ let app = express();
 //set configuration
 
 app.set("views",path.join(__dirname,"views"))
+console.log(__dirname);
 app.set("view engine","ejs");
 
 //set defautlt static response

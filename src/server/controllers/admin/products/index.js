@@ -145,9 +145,11 @@ class Product{
 		product_model.findById(req.params.id,function(err,product){
 			if(err){
 				console.log(err);
+				console.log("heyy");
 				res.redirect("/admin/product")
 				
 			}else{
+				console.log(req.params.id)
 				var galleryDir = `public/product_image/${product.id}`
 				var galleryImages = null
 				
@@ -159,7 +161,8 @@ class Product{
 						
 						
 						category_model.find(function(err,cats){
-							res.render("admin/add_product",{
+
+					res.render("admin/edit_product",{
 				  title:product.title,
 				  price:product.price,
 				  desc:product.desc,
