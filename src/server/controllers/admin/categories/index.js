@@ -11,8 +11,7 @@ class Category{
 	getCategory(req,res){
 		
 		category_model.find(function(err,categories){
-			if(err) throw err;
-			console.log(categories);
+			if(err) throw err
 			res.render("admin/categories",{
 				categories : categories
 			});

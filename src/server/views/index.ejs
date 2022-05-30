@@ -1,5 +1,40 @@
 <%- include('__layout/header') -%>
 
-<h1>Welcome to Shiro Shopp</h1>
+
+
+<div class="container-fluid">
+    
+    <div class="row">
+        <div class="col-md-3"><br><br><br><div class="list-group">
+            <div class="list-group-item"><a href="/?product=all">All</a></div>
+        <% categories.forEach(function(category){ %>
+            <div class="list-group-item" ><a href="/?products=<%= category.slog %>"><%= category.title %></a></div>
+     <%  }) %>
+        </div></div>
+        <div class="col-md-9">
+            <br>
+            <input type="search" name="searchcategory" class="form-control" placeholder="search in category..." style="width:320px;display:block;margin:0 auto">
+            <br>
+            <h4><%= catTitle %></h4>
+            <div class="container" style="display: flex;flex-wrap: wrap;flex-direction: row;">
+                <% products.forEach(function(value){ %>
+                    <div class="card" style="width:300px;margin:10px auto">
+                        <div class="card-header">
+                            <%= value.title %>
+                        </div>
+                        <div class="card-body">
+                            <img src="product_image/<%= value._id %>/<%= value.image %>" class="w-100" alt="<%= value.title%> image">
+                        </div>
+                        <div class="card-footer"><button class="btn btn-success">Buy</button></div>
+                    </div>
+              <%  }) %>
+                
+            </div>
+            
+            
+        </div>
+
+    </div>
+</div>
 
 <%- include('__layout/footer') -%>
