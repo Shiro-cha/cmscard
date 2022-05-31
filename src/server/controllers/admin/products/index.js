@@ -180,6 +180,16 @@ class Product{
 	});
 	}
 	
+	deleteProduct(req,res){
+		
+		product_model.findByIdAndRemove(req.params.id,function(err){
+			if(err) throw err
+			res.send("deleting success");
+			
+		});
+		
+	}
+	
 } 
 
 module.exports = new Product();

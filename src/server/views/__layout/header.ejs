@@ -3,23 +3,28 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/styles.css">
 <title><%= title %></title>
 </head>
 
 <body>
-<nav class="navbar navbar-dark navbar-expand-md  bg-dark">
-<div class="container-fluid"><a class="navbar-brand" href="#"><%= projectname %></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+<nav class="navbar navbar-dark navbar-expand-md  bg-dark fixed-top" style="display:flex;justify-content:space-between">
+<div class="container-fluid text-light" ><%= projectname %><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
 <div class="collapse navbar-collapse"
 id="navcol-1">
 <ul class="nav navbar-nav">
 
 <% pages.forEach(function(value){ %>
-	<li class="nav-item" role="presentation"><a class="nav-link" href="./<%= value.slog %>"><%= value.title %></a></li>	
+	<li class="nav-item" role="presentation"><a class="nav-link" href="/<%= value.slog %>"><%= value.title %></a></li>	
 <% }) %>
 
 </ul>
+</div>
+</div>
+<div class="dropdown">
+<button class="btn btn-default text-light dropdown-toggle" data-toggle="dropdown"  style="margin-right:200px;">Cart(<span id="cart" class="text-warning"></span>)</button>
+<div class="dropdown-menu" id="cart-list" style="right:0;width:250px">
 </div>
 </div>
 </nav>

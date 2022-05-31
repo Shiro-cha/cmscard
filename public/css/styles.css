@@ -1,6 +1,19 @@
+body{
+	background-color:#cccccc;
+}
+
 tr:not(.home){
 	cursor:pointer;
 }
 .ui-state-hightlight{
 	border: 2px dashed #567890;
+}
+.card{
+	transition:all 1s ease;
+}
+.card:hover{
+	box-shadow:0px 0px 10px #005ce6;	
+}
+.list-group a{
+	text-decoration:none !important;
 }

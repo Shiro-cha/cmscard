@@ -5,7 +5,7 @@
 <div class="container-fluid">
     
     <div class="row">
-        <div class="col-md-3"><br><br><br><div class="list-group">
+        <div class="col-md-3"><br><br><br><div class="list-group" style="position:sticky;top:55px">
             <div class="list-group-item"><a href="/?product=all">All</a></div>
         <% categories.forEach(function(category){ %>
             <div class="list-group-item" ><a href="/?products=<%= category.slog %>"><%= category.title %></a></div>
@@ -19,14 +19,56 @@
             <div class="container" style="display: flex;flex-wrap: wrap;flex-direction: row;">
                 <% products.forEach(function(value){ %>
                     <div class="card" style="width:300px;margin:10px auto">
-                        <div class="card-header">
-                            <%= value.title %>
+                        <div class="card-header bg-dark text-light" style="display:flex;justify-content:space-between">
+                        <span><%= value.title %></span><h3 class="badge badge-primary"><%= value.price %>$</h3> 
                         </div>
                         <div class="card-body">
                             <img src="product_image/<%= value._id %>/<%= value.image %>" class="w-100" alt="<%= value.title%> image">
                         </div>
-                        <div class="card-footer"><button class="btn btn-success">Buy</button></div>
+                        <div class="card-footer" style="display:flex;justify-content:space-between"><button class="btn btn-info" data-toggle="modal" data-target="#<%= value.slog %>">View details</button><button class="btn btn-success add-cart" id="<%= value._id %>" >Add to cart</button></div>
                     </div>
+                    
+                    
+                    <div class="modal" id="<%= value.slog %>">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                    
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                    <h4 class="modal-title"><%= value.title %></h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                    	
+                    <div class="row">
+						<div class="col-md-6">
+						<img src="product_image/<%= value._id %>/<%= value.image %>" class="w-100" alt="<%= value.title%> image">
+                    	</div>
+                    	<div class="col-md-6">
+                    	<p><b>Name</b>:  <%= value.title%></p>
+                    	<p><b>Price</b>: <%= value.price%> $</p>
+                    	<p><b>Category</b>: <%= value.category%></p>
+                    	<p><b>Description:</b></p>
+                    	<i><%= value.desc%></i>
+                    	</div>
+                    </div>
+                    
+                    
+                    
+                    </div>
+                    
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                    
+                    </div>
+                    </div>
+                    </div>
+                    
+                    
               <%  }) %>
                 
             </div>
@@ -38,3 +80,4 @@
 </div>
 
 <%- include('__layout/footer') -%>
+<script src="js/addtocart.js"></script>

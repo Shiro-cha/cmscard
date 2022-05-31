@@ -59,6 +59,9 @@ router.get("/edit-product/:id",product_admin.getEditProduct);
 
 // POST edit-category/:id
 
+//Delete product
+
+router.delete("/delete-product/:id",product_admin.deleteProduct);
 
 
 

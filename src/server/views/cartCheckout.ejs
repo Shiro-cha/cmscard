@@ -1,0 +1,16 @@
+<%- include('__layout/header') -%>
+
+<div class="container" style="margin:100px auto;">
+    <h3><b>Total :</b> <%= price %> $</h3>
+    <% products.forEach(function(value){ 
+        if(value){
+        %>
+
+        <div  class="row" ><div class="col-md-6 p-3" style="width:50%"><img src="/product_image/<%= value.product._id %>/<%= value.product.image %>" alt="<%= value.product.title %>" style="display:block;width:50%;margin:0 auto;"></div><div class="col-md-6 bg-light" style="border-bottom:3px solid rgba(0, 0, 0, 0.651)"><p><b>Product :</b> <%= value.product.title %></p><p><b>Quantity :</b> <%= value.number %></p><p><b>Price :</b> <%= value.product.price %> $</p><p><b>TOTAL Price= </b> <%= value.number * value.product.price %> $</p></div></div>
+   <% }}) %> 
+
+
+    </div>
+
+<%- include('__layout/footer') -%>
+<script src="/js/addtocart.js"></script>

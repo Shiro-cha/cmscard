@@ -42,12 +42,7 @@ app.use(bodyparser.json());
 
 //set express session middelware
 app.set("trust proxy",1);
-app.use(session({
-	secret: 'keyboard cat',
-	resave: false,
-	saveUninitialized: true,
-	cookie: { secure: true }
-}))
+app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 3600000 }}))
 
 //set express validator middelware
 
